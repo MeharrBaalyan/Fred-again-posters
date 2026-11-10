@@ -1,82 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fred again.. — Places We've Never Been</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fred again.. — Tour Poster</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
   <main class="poster">
-    
-    <!-- Hero Crowd Section -->
-    <header class="crowd">
-      <div class="crowd-title">
+    <!-- RULE 1: The crowd comes first -->
+    <div class="crowd">
+      <div class="crowd-content">
         <h1>FRED AGAIN..</h1>
         <p>PLACES WE'VE NEVER BEEN TOUR</p>
       </div>
-    </header>
+    </div>
 
-    <!-- Stage & Interactive Controller -->
+    <!-- STAGE & DECK -->
     <section class="stage">
       <div class="deck">
-        
-        <!-- Deck Jog Wheels -->
-        <img src="jog.png" alt="" class="jog jog-left">
-        <img src="jog.png" alt="" class="jog jog-right">
+        <!-- Jog Wheels -->
+        <img src="jog.png" alt="" class="jog left" />
+        <img src="jog.png" alt="" class="jog right" />
 
-        <!-- Trigger Pads -->
+        <!-- RULE 2 & 3: Pads with checkboxes -->
         <div class="pads">
-          <label class="pad">
-            <input type="checkbox">
+          <label class="pad" style="--light-color: #ff5a1f;">
+            <input type="checkbox" />
             <span class="date">12 Mar</span>
             <span class="city">London</span>
             <span class="voice">Alexandra Palace</span>
           </label>
 
-          <label class="pad">
-            <input type="checkbox">
+          <label class="pad" style="--light-color: #00f0ff;">
+            <input type="checkbox" />
             <span class="date">15 Mar</span>
             <span class="city">Berlin</span>
             <span class="voice">Velodrom</span>
           </label>
 
-          <label class="pad">
-            <input type="checkbox">
+          <label class="pad" style="--light-color: #ff007f;">
+            <input type="checkbox" />
             <span class="date">19 Mar</span>
             <span class="city">Paris</span>
             <span class="voice">Zénith</span>
           </label>
 
-          <label class="pad">
-            <input type="checkbox">
+          <label class="pad" style="--light-color: #ffe600;">
+            <input type="checkbox" />
             <span class="date">24 Mar</span>
             <span class="city">Amsterdam</span>
             <span class="voice">Ziggo Dome</span>
           </label>
 
-          <label class="pad">
-            <input type="checkbox">
+          <label class="pad" style="--light-color: #00ff66;">
+            <input type="checkbox" />
             <span class="date">28 Mar</span>
             <span class="city">New York</span>
             <span class="voice">Forest Hills Stadium</span>
           </label>
 
-          <label class="pad">
-            <input type="checkbox">
+          <label class="pad" style="--light-color: #b000ff;">
+            <input type="checkbox" />
             <span class="date">02 Apr</span>
             <span class="city">Los Angeles</span>
             <span class="voice">LA Coliseum</span>
           </label>
         </div>
 
-        <!-- Ticket Button -->
-        <a href="https://www.fredagain.com" target="_blank" rel="noopener noreferrer" class="tickets-btn">Get Tickets</a>
-
+        <!-- TICKETS BUTTON (Direct link to official website) -->
+        <a href="https://www.fredagain.com" target="_blank" rel="noopener noreferrer" class="tickets">Get Tickets</a>
       </div>
     </section>
-
   </main>
 
 </body>
