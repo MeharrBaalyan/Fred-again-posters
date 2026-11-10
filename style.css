@@ -12,9 +12,7 @@ body {
   overflow-x: hidden;
 }
 
-/* ==========================================================================
-   RULE 1: The crowd comes first.
-   ========================================================================== */
+/* Section 1: Crowd Background */
 .crowd {
   position: sticky;
   top: 0;
@@ -26,7 +24,6 @@ body {
   justify-content: center;
   text-align: center;
   z-index: 1;
-  transition: filter 0.5s ease;
 }
 
 .crowd-content h1 {
@@ -42,7 +39,7 @@ body {
   margin-top: 10px;
 }
 
-/* Stage container holding the deck */
+/* Section 2: Stage & Deck */
 .stage {
   position: relative;
   min-height: 100vh;
@@ -52,7 +49,6 @@ body {
   padding: 40px 0;
 }
 
-/* Deck Frame */
 .deck {
   position: relative;
   width: min(1000px, 92vw);
@@ -60,27 +56,29 @@ body {
   background: #111113 url('deck.png') center / contain no-repeat;
   border-radius: 16px;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
-  counter-reset: lit;
 }
 
-/* Jog Wheels */
+/* 2 Spinning Circles (Jog Wheels) */
 .jog {
   position: absolute;
   top: 18%;
   width: 28%;
   aspect-ratio: 1 / 1;
   border-radius: 50%;
-  background: radial-gradient(circle, #333 0%, #111 70%);
-  border: 4px solid #222;
-  transition: transform 0.3s ease;
+  background: radial-gradient(circle, #444 0%, #111 75%);
+  border: 4px dashed #666;
+  animation: spinWheel 4s linear infinite;
 }
 
 .jog.left { left: 5%; }
 .jog.right { right: 5%; }
 
-/* ==========================================================================
-   RULE 2: Every stop is the same pad.
-   ========================================================================== */
+@keyframes spinWheel {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Section 3: Performance Pads */
 .pads {
   position: absolute;
   left: 36%;
@@ -106,7 +104,7 @@ body {
   align-items: center;
   text-align: center;
   user-select: none;
-  transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, transform 0.1s ease;
+  transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .pad input {
@@ -118,7 +116,6 @@ body {
 .pad .date {
   font-size: 0.7rem;
   text-transform: uppercase;
-  letter-spacing: 1px;
 }
 
 .pad .city {
@@ -134,18 +131,11 @@ body {
   opacity: 0.7;
 }
 
-.pad:active {
-  transform: scale(0.93);
-}
-
-/* ==========================================================================
-   RULE 3: Pressing a pad lights it, and it stays lit.
-   ========================================================================== */
+/* Different Color Glows on Click */
 .pad:has(input:checked) {
   background: var(--light-color, #ff5a1f);
   color: #000;
-  box-shadow: 0 0 15px var(--light-color, #ff5a1f);
-  counter-increment: lit;
+  box-shadow: 0 0 18px var(--light-color, #ff5a1f);
 }
 
 .pad:has(input:checked) .city,
@@ -154,52 +144,26 @@ body {
   opacity: 1;
 }
 
-/* ==========================================================================
-   Deck active states
-   ========================================================================== */
-.deck:has(input:checked) .jog {
-  animation: spin 3s linear infinite;
-}
-
-@keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-body:has(input:checked) .crowd {
-  filter: brightness(1.2) contrast(1.1);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .deck:has(input:checked) .jog {
-    animation: none;
-  }
-}
-
-/* ==========================================================================
-   Ticket Button
-   ========================================================================== */
-.tickets {
-  position: absolute;
-  right: 6%;
-  bottom: 12%;
-  padding: 10px 18px;
+/* Section 4: Separate Fixed Ticket Button on Bottom Right */
+.fixed-tickets {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  padding: 12px 24px;
   background: #ffffff;
   color: #000000;
   text-decoration: none;
   font-weight: bold;
-  font-size: 0.85rem;
-  border-radius: 20px;
+  font-size: 0.9rem;
+  border-radius: 30px;
   text-transform: uppercase;
   letter-spacing: 1px;
-  transition: transform 0.2s ease, background 0.2s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  z-index: 100;
+  transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
-.tickets::before {
-  content: counter(lit) " / 6 nights · ";
-}
-
-.tickets:hover {
-  transform: scale(1.05);
-  background: #e0e0e0;
+.fixed-tickets:hover {
+  transform: translateY(-2px);
+  background: #e2e2e2;
 }

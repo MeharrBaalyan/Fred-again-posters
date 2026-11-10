@@ -9,7 +9,7 @@
 <body>
 
   <main class="poster">
-    <!-- RULE 1: The crowd comes first -->
+    <!-- Hero Crowd Section -->
     <div class="crowd">
       <div class="crowd-content">
         <h1>FRED AGAIN..</h1>
@@ -17,14 +17,14 @@
       </div>
     </div>
 
-    <!-- STAGE & DECK -->
+    <!-- Stage & Interactive Controller -->
     <section class="stage">
       <div class="deck">
-        <!-- Jog Wheels -->
-        <img src="jog.png" alt="" class="jog left" />
-        <img src="jog.png" alt="" class="jog right" />
+        <!-- 2 Spinning Jog Wheels -->
+        <div class="jog left"></div>
+        <div class="jog right"></div>
 
-        <!-- RULE 2 & 3: Pads with checkboxes -->
+        <!-- 6 Pads with Different Accent Colors -->
         <div class="pads">
           <label class="pad" style="--light-color: #ff5a1f;">
             <input type="checkbox" />
@@ -68,11 +68,11 @@
             <span class="voice">LA Coliseum</span>
           </label>
         </div>
-
-        <!-- TICKETS BUTTON (Direct link to official website) -->
-        <a href="https://www.fredagain.com" target="_blank" rel="noopener noreferrer" class="tickets">Get Tickets</a>
       </div>
     </section>
+
+    <!-- Separate Tickets Button on the Bottom-Right of the Page -->
+    <a href="https://www.fredagain.com" target="_blank" rel="noopener noreferrer" class="fixed-tickets">Get Tickets</a>
   </main>
 
 </body>
