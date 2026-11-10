@@ -1,0 +1,233 @@
+/* Reset & Base Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: #050505;
+  color: #ffffff;
+  overflow-x: hidden;
+}
+
+/* ==========================================================================
+   RULE 1: The crowd comes first.
+   The crowd photo fills the first screen and stays still while the deck rises over it.
+   ========================================================================== */
+.crowd {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  /* Fallback dark gradient placeholder if crowd.jpg is missing */
+  background: radial-gradient(circle at center, #2a2a2a 0%, #050505 100%),
+              url('crowd.jpg') center / cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  z-index: 1;
+  transition: filter 0.5s ease;
+}
+
+.crowd-content h1 {
+  font-size: clamp(3rem, 8vw, 6rem);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+.crowd-content p {
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  opacity: 0.8;
+  letter-spacing: 2px;
+  margin-top: 10px;
+}
+
+/* Stage container holding the deck */
+.stage {
+  position: relative;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  z-index: 2;
+  padding: 40px 0;
+}
+
+/* Deck Frame */
+.deck {
+  position: relative;
+  width: min(1000px, 92vw);
+  aspect-ratio: 16 / 9;
+  background: #111113 url('deck.png') center / contain no-repeat;
+  border-radius: 16px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+  counter-reset: lit; /* Bonus: Track lit pads count */
+}
+
+/* Jog Wheels */
+.jog {
+  position: absolute;
+  top: 18%;
+  width: 28%;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, #333 0%, #111 70%);
+  border: 4px solid #222;
+  transition: transform 0.3s ease;
+}
+
+.jog.left { left: 5%; }
+.jog.right { right: 5%; }
+
+/* ==========================================================================
+   RULE 2: Every stop is the same pad.
+   Same shape, same parts. Only the words change.
+   ========================================================================== */
+.pads {
+  position: absolute;
+  left: 36%;
+  bottom: 12%;
+  width: 28%;
+  height: 32%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.pad {
+  position: relative;
+  background: #1e1e24;
+  color: #888899;
+  border: 1px solid #333;
+  border-radius: 6px;
+  padding: 8px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  user-select: none;
+  /* Step 4 (#1): Fades in instead of snapping */
+  transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, transform 0.1s ease;
+}
+
+.pad input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.pad .date {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.pad .city {
+  font-size: 0.95rem;
+  font-weight: bold;
+  color: #fff;
+  margin-top: 2px;
+}
+
+/* Step 4 (#3): Voice notes placement & reveal */
+.pad .voice {
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 180px;
+  background: rgba(15, 15, 20, 0.95);
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 10;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Show voice note on hover or focus */
+.pad:hover .voice,
+.pad:has(input:focus-visible) .voice {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-4px);
+}
+
+/* Step 4 (#4): Tactile hardware press feel */
+.pad:active {
+  transform: scale(0.93);
+}
+
+/* ==========================================================================
+   RULE 3: Pressing a pad lights it, and it stays lit.
+   ========================================================================== */
+.pad:has(input:checked) {
+  background: var(--light-color, #ff5a1f);
+  color: #000;
+  /* Step 4 (#1): Glow effect using individual city color variable */
+  box-shadow: 0 0 15px var(--light-color, #ff5a1f);
+  counter-increment: lit; /* Increment pad counter */
+}
+
+.pad:has(input:checked) .city {
+  color: #000;
+}
+
+/* ==========================================================================
+   Step 4 (#2): What happens when the deck starts playing?
+   ========================================================================== */
+/* Spin jog wheels when ANY pad is lit */
+.deck:has(input:checked) .jog {
+  animation: spin 3s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Brighten the crowd background when active */
+body:has(input:checked) .crowd {
+  filter: brightness(1.2) contrast(1.1);
+}
+
+/* Respect user reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .deck:has(input:checked) .jog {
+    animation: none;
+  }
+}
+
+/* ==========================================================================
+   Bonus: Ticket Button showing Build-up Counter
+   ========================================================================== */
+.tickets {
+  position: absolute;
+  right: 6%;
+  bottom: 12%;
+  padding: 10px 18px;
+  background: #ffffff;
+  color: #000000;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.85rem;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.tickets::before {
+  content: counter(lit) " / 6 nights · ";
+}
+
+.tickets:hover {
+  transform: scale(1.05);
+  background: #e0e0e0;
+}
