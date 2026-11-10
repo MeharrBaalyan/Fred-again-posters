@@ -58,7 +58,7 @@ body {
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
 }
 
-/* 2 Spinning Circles (Jog Wheels) */
+/* 2 Spinning Circles */
 .jog {
   position: absolute;
   top: 18%;
@@ -104,6 +104,7 @@ body {
   align-items: center;
   text-align: center;
   user-select: none;
+  /* Only transitions background color and glow, no transform or movement */
   transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -131,7 +132,7 @@ body {
   opacity: 0.7;
 }
 
-/* Different Color Glows on Click */
+/* Pad Checked State: Strictly Color Change & Soft Glow */
 .pad:has(input:checked) {
   background: var(--light-color, #ff5a1f);
   color: #000;
@@ -144,7 +145,7 @@ body {
   opacity: 1;
 }
 
-/* Section 4: Separate Fixed Ticket Button on Bottom Right */
+/* Section 4: Fixed Ticket Button (No bounce or shift on hover/press) */
 .fixed-tickets {
   position: fixed;
   right: 24px;
@@ -160,10 +161,9 @@ body {
   letter-spacing: 1px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
   z-index: 100;
-  transition: transform 0.2s ease, background-color 0.2s ease;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .fixed-tickets:hover {
-  transform: translateY(-2px);
   background: #e2e2e2;
 }
