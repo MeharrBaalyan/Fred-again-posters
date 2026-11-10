@@ -12,7 +12,7 @@ body {
   overflow-x: hidden;
 }
 
-/* Section 1: Crowd Background */
+/* Section 1: Crowd Background (Static) */
 .crowd {
   position: sticky;
   top: 0;
@@ -39,7 +39,7 @@ body {
   margin-top: 10px;
 }
 
-/* Section 2: Stage & Deck */
+/* Section 2: Stage & Deck Layout */
 .stage {
   position: relative;
   min-height: 100vh;
@@ -104,7 +104,7 @@ body {
   align-items: center;
   text-align: center;
   user-select: none;
-  /* Only transitions background color and glow, no transform or movement */
+  /* Only transition pad color and glow */
   transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -132,7 +132,7 @@ body {
   opacity: 0.7;
 }
 
-/* Pad Checked State: Strictly Color Change & Soft Glow */
+/* Pad Active State: Only changes the pad color and glow */
 .pad:has(input:checked) {
   background: var(--light-color, #ff5a1f);
   color: #000;
@@ -145,7 +145,7 @@ body {
   opacity: 1;
 }
 
-/* Section 4: Fixed Ticket Button (No bounce or shift on hover/press) */
+/* Section 4: Fixed Ticket Button */
 .fixed-tickets {
   position: fixed;
   right: 24px;
