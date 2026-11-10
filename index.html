@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fred again.. — Tour Poster</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <main class="poster">
-    <!-- RULE 1: The crowd comes first -->
+    
+    <!-- Hero Crowd Section -->
     <div class="crowd">
       <div class="crowd-content">
         <h1>FRED AGAIN..</h1>
@@ -17,62 +18,65 @@
       </div>
     </div>
 
-    <!-- STAGE & DECK -->
+    <!-- Stage & Interactive Controller -->
     <section class="stage">
       <div class="deck">
-        <!-- Jog Wheels (alt="" marks them as decorative) -->
-        <img src="jog.png" alt="" class="jog left" />
-        <img src="jog.png" alt="" class="jog right" />
+        
+        <!-- Deck Jog Wheels -->
+        <img src="jog.png" alt="" class="jog left">
+        <img src="jog.png" alt="" class="jog right">
 
-        <!-- RULE 2 & 3: Pads with checkboxes -->
+        <!-- Trigger Pads -->
         <div class="pads">
-          <label class="pad" style="--light-color: #ff5a1f;">
-            <input type="checkbox" />
+          <label class="pad">
+            <input type="checkbox">
             <span class="date">12 Mar</span>
             <span class="city">London</span>
-            <span class="voice">Alexandra Palace · "we stayed till the lights came on"</span>
+            <span class="voice">Alexandra Palace</span>
           </label>
 
-          <label class="pad" style="--light-color: #00f0ff;">
-            <input type="checkbox" />
+          <label class="pad">
+            <input type="checkbox">
             <span class="date">15 Mar</span>
             <span class="city">Berlin</span>
-            <span class="voice">Velodrom · "dancing in the rain outside"</span>
+            <span class="voice">Velodrom</span>
           </label>
 
-          <label class="pad" style="--light-color: #ff007f;">
-            <input type="checkbox" />
+          <label class="pad">
+            <input type="checkbox">
             <span class="date">19 Mar</span>
             <span class="city">Paris</span>
-            <span class="voice">Zénith · "lost my shoes somewhere in the crowd"</span>
+            <span class="voice">Zénith</span>
           </label>
 
-          <label class="pad" style="--light-color: #ffe600;">
-            <input type="checkbox" />
+          <label class="pad">
+            <input type="checkbox">
             <span class="date">24 Mar</span>
             <span class="city">Amsterdam</span>
-            <span class="voice">Ziggo Dome · "the bass shook the whole floor"</span>
+            <span class="voice">Ziggo Dome</span>
           </label>
 
-          <label class="pad" style="--light-color: #00ff66;">
-            <input type="checkbox" />
+          <label class="pad">
+            <input type="checkbox">
             <span class="date">28 Mar</span>
             <span class="city">New York</span>
-            <span class="voice">Forest Hills Stadium · "screaming every single word"</span>
+            <span class="voice">Forest Hills Stadium</span>
           </label>
 
-          <label class="pad" style="--light-color: #b000ff;">
-            <input type="checkbox" />
+          <label class="pad">
+            <input type="checkbox">
             <span class="date">02 Apr</span>
             <span class="city">Los Angeles</span>
-            <span class="voice">LA Coliseum · "we met three new best friends"</span>
+            <span class="voice">LA Coliseum</span>
           </label>
         </div>
 
-        <!-- PLAY / TICKETS BUTTON WITH BUILD-UP COUNTER -->
-        <a href="#tickets" class="tickets">Get Tickets</a>
+        <!-- Ticket Button (Links directly to official site) -->
+        <a href="https://www.fredagain.com" target="_blank" rel="noopener noreferrer" class="tickets">Get Tickets</a>
+
       </div>
     </section>
+
   </main>
 
 </body>
