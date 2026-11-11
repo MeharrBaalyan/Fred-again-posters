@@ -1,4 +1,3 @@
-/* Reset */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -57,103 +56,23 @@ body {
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
 }
 
-/* 2 Spinning Circles */
+/* Realistic & Interactive Jog Wheels */
 .jog {
   position: absolute;
   top: 18%;
   width: 28%;
   aspect-ratio: 1 / 1;
   border-radius: 50%;
-  background: radial-gradient(circle, #444 0%, #111 75%);
-  border: 4px dashed #666;
+  /* Vinyl Platter Styling */
+  background: 
+    radial-gradient(circle, #000 12%, transparent 13%),
+    radial-gradient(circle, #222 25%, #000 26%, #111 40%, #050505 70%, #2a2a2a 100%);
+  border: 6px solid #1a1a1a;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.9), inset 0 0 10px rgba(255, 255, 255, 0.1);
+  cursor: grab;
   animation: spinWheel 4s linear infinite;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.jog.left { left: 5%; }
-.jog.right { right: 5%; }
-
-@keyframes spinWheel {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-/* Pads Grid */
-.pads {
-  position: absolute;
-  left: 36%;
-  bottom: 12%;
-  width: 28%;
-  height: 32%;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-}
-
-.pad {
-  position: relative;
-  background: #1e1e24;
-  color: #888899;
-  border: 1px solid #333;
-  border-radius: 6px;
-  padding: 6px;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  user-select: none;
-}
-
-.pad input {
-  position: absolute;
-  opacity: 0;
-  pointer-events: none;
-}
-
-.pad .date {
-  font-size: 0.7rem;
-  text-transform: uppercase;
-}
-
-.pad .city {
-  font-size: 0.9rem;
-  font-weight: bold;
-  color: #fff;
-  margin-top: 2px;
-}
-
-.pad .voice {
-  font-size: 0.65rem;
-  margin-top: 3px;
-  opacity: 0.7;
-}
-
-/* Simple Light Up Rule: Only changes pad background color when checked */
-.pad:has(input:checked) {
-  background: var(--light-color, #ff5a1f);
-  color: #000000;
-}
-
-.pad:has(input:checked) .city,
-.pad:has(input:checked) .voice {
-  color: #000000;
-  opacity: 1;
-}
-
-/* Fixed Ticket Button */
-.fixed-tickets {
-  position: fixed;
-  right: 24px;
-  bottom: 24px;
-  padding: 12px 24px;
-  background: #ffffff;
-  color: #000000;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 0.9rem;
-  border-radius: 30px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  z-index: 100;
-}
+/* White vinyl cue indicator dot */
+.jog::
