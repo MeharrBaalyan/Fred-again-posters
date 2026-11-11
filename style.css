@@ -104,6 +104,7 @@ body {
   align-items: center;
   text-align: center;
   user-select: none;
+  transition: background-color 0.1s ease, box-shadow 0.1s ease;
 }
 
 .pad input {
@@ -130,15 +131,19 @@ body {
   opacity: 0.7;
 }
 
-/* Simple Light Up Rule: Only changes pad background color when checked */
+/* Pad Glow Logic (Glows only on click press or checked state) */
+.pad:active,
 .pad:has(input:checked) {
-  background: var(--light-color, #ff5a1f);
-  color: #000000;
+  background: var(--light-color, #ff5a1f) !important;
+  color: #000000 !important;
+  box-shadow: 0 0 15px var(--light-color, #ff5a1f), inset 0 0 6px rgba(255, 255, 255, 0.5);
 }
 
+.pad:active .city,
+.pad:active .voice,
 .pad:has(input:checked) .city,
 .pad:has(input:checked) .voice {
-  color: #000000;
+  color: #000000 !important;
   opacity: 1;
 }
 
