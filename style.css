@@ -1,12 +1,23 @@
-/* Update .crowd */
+/* Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: #050505;
+  color: #ffffff;
+  overflow-x: hidden;
+}
+
+/* Crowd Section */
 .crowd {
   position: sticky;
   top: 0;
   height: 100vh;
-  background-image: url('crowd.jpg');
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
+  background: url('crowd.jpg') center / cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -14,16 +25,135 @@
   z-index: 1;
 }
 
-/* Update .deck */
+.crowd-content h1 {
+  font-size: clamp(3rem, 8vw, 6rem);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+.crowd-content p {
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  opacity: 0.8;
+  letter-spacing: 2px;
+  margin-top: 10px;
+}
+
+/* Stage & Deck */
+.stage {
+  position: relative;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  z-index: 2;
+  padding: 40px 0;
+}
+
 .deck {
   position: relative;
   width: min(1000px, 92vw);
   aspect-ratio: 16 / 9;
-  background-color: #111113;
-  background-image: url('deck.jpeg');
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
+  background: #111113 url('deck.jpeg') center / contain no-repeat;
   border-radius: 16px;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+}
+
+/* 2 Spinning Circles */
+.jog {
+  position: absolute;
+  top: 18%;
+  width: 28%;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, #444 0%, #111 75%);
+  border: 4px dashed #666;
+  animation: spinWheel 4s linear infinite;
+}
+
+.jog.left { left: 5%; }
+.jog.right { right: 5%; }
+
+@keyframes spinWheel {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Pads Grid */
+.pads {
+  position: absolute;
+  left: 36%;
+  bottom: 12%;
+  width: 28%;
+  height: 32%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.pad {
+  position: relative;
+  background: #1e1e24;
+  color: #888899;
+  border: 1px solid #333;
+  border-radius: 6px;
+  padding: 6px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  user-select: none;
+}
+
+.pad input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.pad .date {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+}
+
+.pad .city {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #fff;
+  margin-top: 2px;
+}
+
+.pad .voice {
+  font-size: 0.65rem;
+  margin-top: 3px;
+  opacity: 0.7;
+}
+
+/* Simple Light Up Rule: Only changes pad background color when checked */
+.pad:has(input:checked) {
+  background: var(--light-color, #ff5a1f);
+  color: #000000;
+}
+
+.pad:has(input:checked) .city,
+.pad:has(input:checked) .voice {
+  color: #000000;
+  opacity: 1;
+}
+
+/* Fixed Ticket Button */
+.fixed-tickets {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  padding: 12px 24px;
+  background: #ffffff;
+  color: #000000;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.9rem;
+  border-radius: 30px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  z-index: 100;
 }
